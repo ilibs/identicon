@@ -1,15 +1,13 @@
-package identicon_test
+package identicon
 
 import (
 	"fmt"
 	"strings"
 	"testing"
-
-	"github.com/nullrocks/identicon"
 )
 
 func ExampleIdentIcon_GeneratorText() {
-	ig, err := identicon.New("namespace", 7, 4)
+	ig, err := New("namespace", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -28,7 +26,7 @@ func ExampleIdentIcon_GeneratorText() {
 }
 
 func TestIdentIconGeneratorText(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"",
 		4,
 		1,
@@ -45,7 +43,7 @@ func TestIdentIconGeneratorText(t *testing.T) {
 }
 
 func TestIdentIconGeneratorText_withNamespace(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		4,
 		1,
@@ -63,11 +61,11 @@ func TestIdentIconGeneratorText_withNamespace(t *testing.T) {
 }
 
 func TestIdentIconGeneratorText_withRandom(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		4,
 		1,
-		identicon.SetRandom(true),
+		SetRandom(true),
 	)
 	username := "nullrocks"
 	ii, _ := ig.Draw(username)
@@ -76,5 +74,4 @@ func TestIdentIconGeneratorText_withRandom(t *testing.T) {
 	if !strings.HasPrefix(gt, expected) || len(gt) <= len(expected) {
 		t.Errorf("GeneratorText should be the namespace, the text and the random string: expected %v, actual %v", expected, gt)
 	}
-
 }

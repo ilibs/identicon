@@ -1,4 +1,4 @@
-package identicon_test
+package identicon
 
 import (
 	"bytes"
@@ -6,12 +6,10 @@ import (
 	"fmt"
 	"os"
 	"testing"
-
-	"github.com/nullrocks/identicon"
 )
 
 func ExampleIdentIcon_Jpeg() {
-	ig, err := identicon.New("", 7, 4)
+	ig, err := New("", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -35,7 +33,7 @@ func ExampleIdentIcon_Jpeg() {
 }
 
 func ExampleIdentIcon_Png() {
-	ig, err := identicon.New("", 7, 4)
+	ig, err := New("", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -56,7 +54,7 @@ func ExampleIdentIcon_Png() {
 }
 
 func ExampleIdentIcon_Png_base64Encoded() {
-	ig, err := identicon.New("", 7, 4)
+	ig, err := New("", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -81,7 +79,7 @@ func ExampleIdentIcon_Png_base64Encoded() {
 }
 
 func TestIdentIconImage(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"",
 		5,
 		1,
@@ -106,7 +104,7 @@ func TestIdentIconImage(t *testing.T) {
 }
 
 func TestIdentIconImagePng(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"",
 		5,
 		1,
@@ -132,7 +130,7 @@ func TestIdentIconImagePng(t *testing.T) {
 }
 
 func TestIdentIconImageJpeg(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"",
 		5,
 		1,
@@ -158,7 +156,7 @@ func TestIdentIconImageJpeg(t *testing.T) {
 }
 
 func TestIdentIconImageSvg(t *testing.T) {
-	ig, _ := identicon.New("", 5, 2)
+	ig, _ := New("", 5, 2)
 
 	username := "nullrocks"
 	ii, _ := ig.Draw(username)

@@ -1,14 +1,12 @@
-package identicon_test
+package identicon
 
 import (
 	"fmt"
 	"testing"
-
-	"github.com/nullrocks/identicon"
 )
 
 func ExampleIdentIcon_Array() {
-	ig, err := identicon.New("github.com", 7, 4)
+	ig, err := New("github.com", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -29,7 +27,7 @@ func ExampleIdentIcon_Array() {
 }
 
 func ExampleIdentIcon_Points() {
-	ig, err := identicon.New("github.com", 7, 4)
+	ig, err := New("github.com", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -48,7 +46,7 @@ func ExampleIdentIcon_Points() {
 }
 
 func ExampleIdentIcon_String() {
-	ig, err := identicon.New("github.com", 7, 4)
+	ig, err := New("github.com", 7, 4)
 
 	if err != nil {
 		panic(err)
@@ -78,7 +76,7 @@ func ExampleIdentIcon_String() {
 
 func TestIdentIconCanvas(t *testing.T) {
 	size := 7
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		size,
 		2,
@@ -214,9 +212,9 @@ func TestIdentIconCanvasIntCoordinates_custom(t *testing.T) {
 	}
 }
 
-func generatedCanvas() *identicon.IdentIcon {
+func generatedCanvas() *IdentIcon {
 	size := 5
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		size,
 		2,
@@ -227,7 +225,7 @@ func generatedCanvas() *identicon.IdentIcon {
 	return ii
 }
 
-func customCanvas() identicon.Canvas {
+func customCanvas() Canvas {
 	pm := make(map[int]map[int]int)
 	pm[0] = make(map[int]int)
 	pm[0][0] = 1
@@ -243,7 +241,7 @@ func customCanvas() identicon.Canvas {
 	visited[0] = true
 	visited[3] = true
 
-	c := identicon.Canvas{
+	c := Canvas{
 		Size:           5,
 		PointsMap:      pm,
 		MinY:           0,

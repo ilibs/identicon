@@ -1,15 +1,13 @@
-package identicon_test
+package identicon
 
 import (
 	"fmt"
 	"image/color"
 	"testing"
-
-	"github.com/nullrocks/identicon"
 )
 
 func Example() {
-	ig, err := identicon.New(
+	ig, err := New(
 		"github.com", // namespace
 		5,            // number of blocks (size)
 		2,            // density of points
@@ -42,7 +40,7 @@ func Example() {
 }
 
 func ExampleGenerator_Draw_size7x7withNamespace() {
-	ig, err := identicon.New(
+	ig, err := New(
 		"null.rocks",
 		7,
 		4,
@@ -82,13 +80,13 @@ func ExampleNew_customOptions() {
 		return color.Transparent
 	}
 
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"",
 		7,
 		4,
-		identicon.SetRandom(true),                           // Resultant image will be random
-		identicon.SetFillColorFunction(alwaysRed),           // Points will be red
-		identicon.SetBackgroundColorFunction(transparentBg), // Background will be transparent
+		SetRandom(true),                 // Resultant image will be random
+		SetFillColorFunction(alwaysRed), // Points will be red
+		SetBackgroundColorFunction(transparentBg), // Background will be transparent
 	)
 
 	// All generated IdentIcons will match configuration (fill=red, bg=transparent, isRandom=true)
@@ -100,7 +98,7 @@ func ExampleNew_customOptions() {
 
 func TestGeneratorNew_success(t *testing.T) {
 
-	ig, err := identicon.New(
+	ig, err := New(
 		"github.com",
 		5,
 		2,
@@ -128,7 +126,7 @@ func TestGeneratorNew_error(t *testing.T) {
 	}
 
 	for _, td := range testData {
-		ig, err := identicon.New(
+		ig, err := New(
 			td.namespace,
 			td.size,
 			td.density,
@@ -145,7 +143,7 @@ func TestGeneratorNew_error(t *testing.T) {
 }
 
 func TestGeneratorDraw(t *testing.T) {
-	ig, err := identicon.New(
+	ig, err := New(
 		"github.com",
 		5,
 		2,
@@ -170,7 +168,7 @@ func TestGeneratorDraw(t *testing.T) {
 
 func TestGeneratorDraw_size(t *testing.T) {
 	size := 7
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		size,
 		2,
@@ -186,7 +184,7 @@ func TestGeneratorDraw_size(t *testing.T) {
 }
 
 func TestGeneratorDraw_emptyTextError(t *testing.T) {
-	ig, _ := identicon.New(
+	ig, _ := New(
 		"github.com",
 		5,
 		2,
