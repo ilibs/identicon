@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/nullrocks/identicon"
+	"github.com/ilibs/identicon"
 )
 
 func main() {
