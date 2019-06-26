@@ -40,8 +40,8 @@ func main() {
 				ii, _ := ig.Draw(u)
 				sizeStr := strconv.Itoa(s[0])
 				img, _ := os.Create("./" + sizeStr + "x" + sizeStr + "/" + strings.Replace(ii.GeneratorText(), ":", "_", -1) + ".png")
-				ii.Png(260, img)
-				img.Close()
+				_ = ii.Png(260, img)
+				_ = img.Close()
 			}
 		}
 	}
